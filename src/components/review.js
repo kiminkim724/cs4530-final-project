@@ -67,7 +67,7 @@ function Review({ review, editable, show = true, currentUser }) {
     }, [review.flagged]);
 
     return (
-        <Row className="mt-4 mx-2 pt-2 align-items-center review-item">
+        <Row className="mt-4 mx-2 pt-2 review-item">
             <Col xs={2} className="text-center">
                 {show &&
                     <>
@@ -77,7 +77,7 @@ function Review({ review, editable, show = true, currentUser }) {
                                 className='ms-2 img-fluid'
                             />
                         </Link>
-                        <div className="fw-bold">
+                        <div className="fw-bold result-title">
                             {album ? album.name : ""}
                         </div>
                         <div>
@@ -87,7 +87,7 @@ function Review({ review, editable, show = true, currentUser }) {
                 }
             </Col>
             <Col xs={show ? 10 : 12}>
-                <Row className="d-flex m-2">
+                <Row className="h-50 m-1">
                     <li key={review._id} style={{ 'list-style-type': 'none' }}>
                         {editable && editing ? (
                             <>
@@ -174,23 +174,14 @@ function Review({ review, editable, show = true, currentUser }) {
                                     <div>
                                         <label className="review-text">{text}</label>
                                     </div>
-
-                                    {editable &&
-                                        < button
-                                            className="btn btn-warning float-end"
-                                            onClick={() => {
-                                                changeEdit();
-                                            }}
-                                        >
-                                            Edit
-                                        </button>
-                                    }
                                 </div>
                             </>
                         )
                         }
                     </li >
-                    <div>
+                </Row>
+                <Row className="align-items-end h-50 m-auto">
+                    <Col className="mb-3">
                         <FontAwesomeIcon onClick={() => {
                             if (currentUser) {
                                 if (isLiked) {
@@ -211,7 +202,19 @@ function Review({ review, editable, show = true, currentUser }) {
                             icon={faThumbsUp}
                             style={{ color: isLiked ? '#0000FF' : 'black' }} />
                         <span className="ms-2 review-other-size">{likes}</span>
-                    </div>
+                    </Col>
+                    <Col className="float-end mb-3">
+                        {editable && !editing && 
+                            < button
+                                className="btn btn-warning float-end"
+                                onClick={() => {
+                                    changeEdit();
+                                }}
+                            >
+                                Edit
+                            </button>
+                        }
+                    </Col>
                 </Row>
             </Col>
         </Row >

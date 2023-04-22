@@ -38,12 +38,16 @@
   }
 }
 
+.bottom-content {
+  align-self: flex-end;
+}
+
 .Auth-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 90vw;
+  height: 90vh;
 }
 
 .Auth-form {
@@ -132,14 +136,29 @@ label {
 }
 
 .review-text {
-  font-size: 1.75vw;
+  font-size: calc(12px + 0.5vw);
 }
 
 .review-other-size {
-  font-size: 1.5vw;
+  font-size: calc(12px + 0.5vw);
 }
 
 .review-item {
   border: solid;
   border-color: dimgray;
+}
+
+.dropdown-size {
+  font-size: calc(12px + 0.5vw);
+  min-width: 100px;
+}
+
+.album-link {
+  text-decoration: none;
+}
+
+.result-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

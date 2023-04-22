@@ -128,7 +128,9 @@ function LoginScreen() {
                             checked={admin}
                             onChange={handleChange}
                         />
-                        Admin?
+                        <span className="ms-1">
+                            Admin?
+                        </span>
                     </label>
                     {admin &&
                         <div className="form-group mt-1">

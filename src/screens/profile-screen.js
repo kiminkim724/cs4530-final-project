@@ -119,7 +119,7 @@ function ProfileScreen() {
     return (
         <div>
             <Row>
-                <Col xs={11}>
+                <Col xs={10}>
                     <h1>
                         {username ? username + "'s" : ""} Profile
                     </h1>
@@ -147,6 +147,7 @@ function ProfileScreen() {
                         )
                     }
                 </Col>
+                <Col xs={1}></Col>
             </Row>
             <Row className="align-items-center">
                 <Col xs={6}>
@@ -210,6 +211,7 @@ function ProfileScreen() {
                         </div>
                     )}
                 </Col>
+                <Col xs={1}></Col>
                 <Col>
                     <Row className="m-3">
                         <Button onClick={() => handleShow('Followers')}>View Followers</Button>
@@ -218,6 +220,7 @@ function ProfileScreen() {
                         <Button onClick={() => handleShow('Following')}>View Following</Button>
                     </Row>
                 </Col>
+                <Col xs={1}></Col>
             </Row>
             <Modal size="lg" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -251,7 +254,7 @@ function ProfileScreen() {
                 loading ?
                     <h1>Loading...</h1>
                     :
-                    <ul className="list-group mt-2">
+                    <ul className="list-group my-2">
                         {reviews.map((review) => (
                             <Review key={review._id} review={review} editable={currentUser && currentUser.username === review.username} show={true}
                                 currentUser={currentUser} />

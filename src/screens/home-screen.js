@@ -39,7 +39,7 @@ function Home() {
 
 
     return (
-        <div className="container mt-2">
+        <div className="container my-2">
             <Row className="align-items-center">
                 <Col xs={11}>
                     {!forYou ?

@@ -16,7 +16,7 @@ function SpotifyAlbumScreen({ query }) {
 
     const [album, setAlbum] = useState();
     const [newReview, setNewReview] = useState({
-        albumReview: "New Review",
+        albumReview: "",
         albumId: id
     });
     const [rating, setRating] = useState(0);
@@ -51,7 +51,7 @@ function SpotifyAlbumScreen({ query }) {
                 </div>
                 <Card className='bg-secondary bg-dark'>
                     <Row className='row no-gutters align-items-center'>
-                        <Col xs={4}>
+                        <Col className="d-flex justify-content-center" xs={4}>
                             <Card.Img
                                 src={album.images[0].url}
                                 className='ms-2 img-fluid now-playing__cover'
@@ -115,7 +115,7 @@ function SpotifyAlbumScreen({ query }) {
                 </Modal>
                 {
                     currentUser && reviews.find(review => review.username === currentUser.username) === undefined && (
-                        <>
+                        <div className="ms-2 mt-2">
                             <h2>Review this album</h2>
                             <div>
                                 {[1, 2, 3, 4, 5].map((value) => (
@@ -128,7 +128,8 @@ function SpotifyAlbumScreen({ query }) {
                                     </span>
                                 ))}
                             </div>
-                            <textarea className="form-control"
+                            <textarea className="form-control mt-1"
+                                placeholder="Enter your review"
                                 onChange={(e) => {
                                     setNewReview({
                                         ...newReview,
@@ -150,7 +151,7 @@ function SpotifyAlbumScreen({ query }) {
                                 }}
                             >
                                 Submit</button>
-                        </>
+                        </div>
                     )
                 }
                 <h2 className="text-center mt-2">Reviews</h2>
@@ -159,7 +160,14 @@ function SpotifyAlbumScreen({ query }) {
                         <h1>Loading...</h1>
                         :
                         <ul className="list-group mt-2 mb-2">
-                            {reviews.map((review) => (
+                            {currentUser && (reviews.find(review => review.username === currentUser.username) ?
+                                [
+                                    reviews.find(review => review.username === currentUser.username),
+                                    ...reviews.filter(review => review.username !== currentUser.username),
+                                ]
+                                :
+                                reviews
+                            ).map((review) => (
                                 <Review key={review._id} review={review} editable={currentUser && currentUser.username === review.username} show={false}
                                     currentUser={currentUser} />
                             ))
