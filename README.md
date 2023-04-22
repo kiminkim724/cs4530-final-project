@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# CS4550 Final Project - Spotify Song Review App
+![cs4550-final - UML Class](https://user-images.githubusercontent.com/55262612/233806332-558a8cec-8049-421c-b61e-3ecdb98e1c40.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
