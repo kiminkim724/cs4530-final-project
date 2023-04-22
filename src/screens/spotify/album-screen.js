@@ -9,7 +9,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Review from "../../components/review";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function SpotifyAlbumScreen() {
+function SpotifyAlbumScreen({ query }) {
     const { currentUser } = useSelector((state) => state.user);
     const { reviews, error, loading } = useSelector((state) => state.reviews);
     const { id } = useParams();
@@ -45,9 +45,9 @@ function SpotifyAlbumScreen() {
     if (album) {
         return (
             <div>
-                <div className="m-2" onClick={() => navigate('/search')}>
+                <div className="m-2" onClick={() => navigate(-1)}>
                     <FontAwesomeIcon size="xl" icon={faArrowLeft} />
-                    <span className="ms-2">Go back to search</span>
+                    <span className="ms-2">Go back</span>
                 </div>
                 <Card className='bg-secondary bg-dark'>
                     <Row className='row no-gutters align-items-center'>

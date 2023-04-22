@@ -48,9 +48,10 @@ function Home() {
                         <h1 className="text-center">Latest Reviews by the People you follow</h1>
                     }
                 </Col>
-                <Col xs={1}>
+                {currentUser && <Col xs={1}>
                     <FontAwesomeIcon size="lg" icon={faStar} color="blue" onClick={changeReviews} />
                 </Col>
+                }
             </Row>
             <ul className="list-group mt-2">
                 {loading ? <h1 className="text-center">Loading</h1>

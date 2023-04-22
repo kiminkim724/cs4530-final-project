@@ -3,7 +3,7 @@ import { updateReviewThunk, deleteReviewThunk } from "../services/review-thunks"
 import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { getAlbum } from "../services/spotify-service";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faFlag } from "@fortawesome/free-solid-svg-icons";
 import { findLikesByReview, likeReview, deleteLike } from "../services/review-service";
@@ -21,6 +21,7 @@ function Review({ review, editable, show = true, currentUser }) {
     const [isFlagged, setFlagged] = useState(review.flagged);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const changeEdit = () => {
         setEditing(!editing);
@@ -85,8 +86,8 @@ function Review({ review, editable, show = true, currentUser }) {
                     </>
                 }
             </Col>
-            <Col xs={10}>
-                <Row className="d-flex">
+            <Col xs={show ? 10 : 12}>
+                <Row className="d-flex m-2">
                     <li key={review._id} style={{ 'list-style-type': 'none' }}>
                         {editable && editing ? (
                             <>
@@ -203,6 +204,7 @@ function Review({ review, editable, show = true, currentUser }) {
                                 }
                             } else {
                                 alert("Please login/register to upvote reviews");
+                                navigate("/login")
                             }
                         }}
                             className="fa-xl"
