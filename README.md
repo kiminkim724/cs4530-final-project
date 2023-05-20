@@ -1,4 +1,4 @@
-# CS4550 Final Project - Spotify Song Review App
+# CS4550 Final Project - Spotify Album Review App
 ![cs4550-final - UML Class](https://user-images.githubusercontent.com/55262612/233806332-558a8cec-8049-421c-b61e-3ecdb98e1c40.png)
 
 
